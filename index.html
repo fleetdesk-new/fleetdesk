@@ -71,6 +71,7 @@
   .horizon{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);z-index:1;opacity:.5}
 
   /* typography */
+  .bgintro0-blur{display:none}
   .eyebrow{font-family:var(--sans);font-weight:500;font-size:clamp(10px,1vw,12px);
     letter-spacing:.4em;text-transform:uppercase;color:var(--teal);margin-bottom:1.5rem;
     display:flex;align-items:center;gap:14px}
@@ -233,7 +234,10 @@
     .feat{grid-template-columns:1fr}
     .versions{grid-template-columns:1fr}
     .pillars{grid-template-columns:1fr}
-    .bgintro0{background-position:center 15% !important}
+    .bgintro0{background-size:contain !important;background-position:center 42% !important;background-repeat:no-repeat !important;position:relative;z-index:1}
+    .bgintro0-blur{display:block;position:absolute;inset:0;background-size:cover;background-position:center 40%;filter:blur(24px) brightness(.7);transform:scale(1.15);z-index:0}
+    .btxt{display:none}
+    .arrows button{width:44px;height:44px;padding:0;justify-content:center}
     .meta{padding-right:1.3rem;margin-right:1.3rem}
     #dots{display:none}
     .slide{padding:100px 22px 80px}
@@ -263,8 +267,8 @@
 <div id="dots"></div>
 <div id="counter"><b id="cnum">01</b> / <span id="ctot">10</span></div>
 <div class="arrows">
-  <button id="bprev" onclick="prev()" aria-label="Previous">&#8592; Prev</button>
-  <button id="bnext" onclick="next()" aria-label="Next">Next &#8594;</button>
+  <button id="bprev" onclick="prev()" aria-label="Previous">&#8592; <span class="btxt">Prev</span></button>
+  <button id="bnext" onclick="next()" aria-label="Next"><span class="btxt">Next</span> &#8594;</button>
 </div>
 <div id="rail"><i></i></div>
 <div id="yt"><div class="box"><button class="x" onclick="closeYT()" aria-label="Close">&#10005;</button><div id="ytframe"></div></div></div>
@@ -279,6 +283,7 @@ const I = window.IMG, V = window.VID;
 const slides = [
   /* 0 — CALLBOATS INTRO */
   {dark:true, html:`
+    <div class="bgintro0-blur" style="background-image:url('${I.cat16_hero}')"></div>
     <div class="bg kb bgintro0" style="background-image:url('${I.cat16_hero}');background-position:center 60%"></div>
     <div class="veil dark-btm"></div><div class="veil dark-left"></div>
     <div class="content on-dark">
