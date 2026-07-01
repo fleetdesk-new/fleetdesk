@@ -150,13 +150,13 @@
   .pillar .pd{font-size:12.5px;line-height:1.6;color:var(--ink-soft);font-weight:400}
   .content.on-dark .pillar .pd{color:#c9d4d9}
 
-  .vbtn{display:inline-flex;align-items:center;gap:11px;margin-top:1.9rem;
-    font-family:var(--sans);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--ink);background:transparent;padding:.85rem 1.5rem;font-weight:500;
+  .vbtn{display:inline-flex;align-items:center;gap:13px;margin-top:1.9rem;
+    font-family:var(--sans);font-size:15px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink);background:transparent;padding:1.02rem 1.8rem;font-weight:500;
     border:1px solid var(--line);cursor:pointer;transition:.3s;border-radius:2px}
   .vbtn:hover{border-color:var(--teal);color:var(--teal);background:rgba(62,124,132,.05)}
-  .vbtn-ic{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;
-    border-radius:50%;background:var(--teal);color:#fff;font-size:10px;padding-left:2px}
+  .vbtn-ic{display:inline-flex;align-items:center;justify-content:center;width:29px;height:29px;
+    border-radius:50%;background:var(--teal);color:#fff;font-size:12px;padding-left:2px}
   .content.on-dark .vbtn{color:#fff;border-color:rgba(255,255,255,.35)}
   .content.on-dark .vbtn:hover{border-color:#fff;background:rgba(255,255,255,.08)}
 
@@ -309,7 +309,7 @@ const slides = [
   /* 2 — CAT 16 (new hero with feature icons) */
   {dark:false, html:`
     <div class="content split">
-      <div class="frame rise" style="background-image:url('${I.cat16_hero}')"></div>
+      <div class="frame rise" style="background-image:url('${I.cat16_hero}');background-size:contain;background-repeat:no-repeat;background-color:#0a1318"></div>
       <div>
         <div class="eyebrow rise">Callboats · CAT 16</div>
         <h2 class="rise">Scale,<br>without <em>emissions.</em></h2>
