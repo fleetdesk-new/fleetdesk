@@ -231,10 +231,10 @@
 
   @media(max-width:880px){
     .split{grid-template-columns:1fr;gap:22px}
-    .frame{height:36vh}.gallery{height:34vh}
-    .feat{grid-template-columns:1fr}
+    .frame{height:30vh}.gallery{height:34vh}
     .versions{grid-template-columns:1fr}
-    .pillars{grid-template-columns:1fr}
+    .pillars{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+    .pillar{padding:1rem 1rem}
     .bgintro0{background-image:url('cat16-mobile.jpg') !important;background-size:cover !important;background-position:center 25% !important}
     .bgintro0-blur{display:none !important}
     
