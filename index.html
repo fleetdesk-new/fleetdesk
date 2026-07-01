@@ -72,7 +72,7 @@
 
   /* typography */
   .bgintro0-blur{display:none}
-  .cat16-icons{display:none}
+  .cat16-icons{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
   .eyebrow{font-family:var(--sans);font-weight:500;font-size:clamp(10px,1vw,12px);
     letter-spacing:.4em;text-transform:uppercase;color:var(--teal);margin-bottom:1.5rem;
     display:flex;align-items:center;gap:14px}
@@ -238,8 +238,6 @@
     .bgintro0{background-image:url('cat16-mobile.jpg') !important;background-size:cover !important;background-position:center 25% !important}
     .bgintro0-blur{display:none !important}
     .frame.order-img{background-image:url('cat10l-mobile.png') !important;background-size:cover !important;background-position:center !important}
-    .cat16frame{background-image:url('cat16-mobile.jpg') !important;background-size:cover !important;background-position:center !important}
-    .cat16-icons{display:flex !important;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
     .btxt{display:none}
     .arrows button{width:44px;height:44px;padding:0;justify-content:center}
     .meta{padding-right:1.3rem;margin-right:1.3rem}
@@ -320,7 +318,7 @@ const slides = [
   /* 2 — CAT 16 (new hero with feature icons) */
   {dark:false, html:`
     <div class="content split">
-      <div class="frame rise cat16frame" style="background-image:url('${I.cat16_hero}');background-size:contain;background-repeat:no-repeat;background-color:#0a1318"></div>
+      <div class="frame rise cat16frame" style="background-image:url('cat16-mobile.jpg');background-size:cover;background-position:center"></div>
       <div class="cat16-icons"><span class="chip">Zero Noise</span><span class="chip">Zero Emission</span><span class="chip">Dynamic Positioning</span><span class="chip">Automatic Docking</span><span class="chip">Autonomous Driving</span></div>
       <div>
         <div class="eyebrow rise">Callboats · CAT 16</div>
