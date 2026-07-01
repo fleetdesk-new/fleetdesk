@@ -233,6 +233,7 @@
     .feat{grid-template-columns:1fr}
     .versions{grid-template-columns:1fr}
     .pillars{grid-template-columns:1fr}
+    .bgintro0{background-position:center 15% !important}
     .meta{padding-right:1.3rem;margin-right:1.3rem}
     #dots{display:none}
     .slide{padding:100px 22px 80px}
@@ -278,7 +279,7 @@ const I = window.IMG, V = window.VID;
 const slides = [
   /* 0 — CALLBOATS INTRO */
   {dark:true, html:`
-    <div class="bg kb" style="background-image:url('${I.cat16_hero}');background-position:center 60%"></div>
+    <div class="bg kb bgintro0" style="background-image:url('${I.cat16_hero}');background-position:center 60%"></div>
     <div class="veil dark-btm"></div><div class="veil dark-left"></div>
     <div class="content on-dark">
       <div class="eyebrow rise">Callboats · Finland</div>
@@ -293,6 +294,8 @@ const slides = [
       <div>
         <div class="eyebrow rise">Callboats · CAT 10 L</div>
         <h2 class="rise">Compact.<br><em>Effortless.</em></h2>
+        <button class="vbtn rise" onclick="openYT('PGQAFqu_dnU')">
+          <span class="vbtn-ic">&#9658;</span> Watch the CAT 10 L in motion</button>
         <p class="body rise">A nimble electric catamaran for resort shuttles, dive trips, dolphin
           watching and water-taxi duty. Up to four propulsion packages — from a serene 9-knot cruiser
           to a 14-knot runabout reaching 34 hours between charges.</p>
@@ -301,10 +304,8 @@ const slides = [
           <li>Up to 14 knots</li><li>Up to 34 h @ 6 knots</li>
           <li>Up to 240 kWh battery</li><li>Solar-assisted, zero-emission</li>
         </ul>
-        <button class="vbtn rise" onclick="openYT('PGQAFqu_dnU')">
-          <span class="vbtn-ic">&#9658;</span> Watch the CAT 10 L in motion</button>
       </div>
-      <div class="frame rise order-img" style="background-image:url('${I.cat10}')"></div>
+      <div class="frame rise order-img" style="background-image:url('${I.cat10}');background-size:contain;background-repeat:no-repeat;background-color:#eef1f2"></div>
     </div>`},
 
   /* 2 — CAT 16 (new hero with feature icons) */
