@@ -15,5 +15,60 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- drift enhancement: gentle bob on all boat photos (non-invasive, WAAPI overlay) -->
+    <style id="drift-css">
+      .fleet-drift{ will-change: translate, rotate; }
+    </style>
+    <script id="drift-js">
+      (function () {
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var i = 0;
+        function isBoatPhoto(el){
+          var bg = (el.style && el.style.backgroundImage) || '';
+          if (bg.indexOf('assets/img/') !== -1) return true;
+          if (el.classList && el.classList.contains('bg')) return true;
+          return false;
+        }
+        function apply(el){
+          if (!el || !el.dataset || el.dataset.fleetDrift) return;
+          if (!isBoatPhoto(el)) return;
+          var h = el.getBoundingClientRect().height;
+          if (h < 40) return;                 // not laid out yet; MutationObserver will catch it later
+          el.dataset.fleetDrift = '1';
+          el.classList.add('fleet-drift');
+          // slight upscale so the bob never reveals the photo edges
+          el.style.scale = '1.06';
+          var amp = Math.max(5, h * 0.012);   // vertical travel in px
+          var dur = 8000 + (i % 4) * 1300;    // out-of-sync rhythm
+          var delay = -(i % 5) * 1700;
+          i++;
+          el.animate(
+            [
+              { translate: '0px 0px',        rotate: '-0.35deg' },
+              { translate: '0px ' + (-amp) + 'px', rotate: '0.35deg' },
+              { translate: '0px 0px',        rotate: '-0.35deg' }
+            ],
+            { duration: dur, iterations: Infinity, easing: 'ease-in-out', delay: delay, composite: 'replace' }
+          );
+        }
+        function sweep(root){ (root || document).querySelectorAll('.bg, [style*="background-image"]').forEach(apply); }
+        function boot(){
+          sweep(document);
+          var root = document.getElementById('root') || document.body;
+          new MutationObserver(function (muts){
+            for (var m=0;m<muts.length;m++){
+              var added = muts[m].addedNodes;
+              for (var n=0;n<added.length;n++){ var nd=added[n]; if(nd.nodeType===1){ apply(nd); sweep(nd); } }
+              if (muts[m].type==='attributes') apply(muts[m].target);
+            }
+          }).observe(root, { childList:true, subtree:true, attributes:true, attributeFilter:['style','class'] });
+          // re-sweep a few times as React lazily mounts sections/carousel
+          var tries=0, iv=setInterval(function(){ sweep(document); if(++tries>6) clearInterval(iv); }, 700);
+        }
+        if (document.readyState === 'complete') setTimeout(boot, 300);
+        else addEventListener('load', function(){ setTimeout(boot, 300); });
+      })();
+    </script>
   </body>
 </html>
